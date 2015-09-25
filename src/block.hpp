@@ -7,14 +7,12 @@
 
 namespace blk {
 
+
     class Block {
 
         public:
             Block() {};
-            Block(int width, int height, int row, int column)
-                : _width(width), _height(height), _row(row), _column(column)
-            {
-            };
+            Block(int width, int height, int row, int column);
             ~Block();
 
             virtual std::string line(int row) const = 0;
@@ -41,7 +39,13 @@ namespace blk {
                 return _row;
             }
             inline int bottomPadding() const {
-                return _column;
+                return _height - _row;
+            }
+            inline int minLine() const {
+                return -_row;
+            }
+            inline int maxLine() const {
+                return bottomPadding();
             }
 
             static char fill;
@@ -53,18 +57,10 @@ namespace blk {
             int _row;
             int _column;
 
-            friend std::ostream& operator<<(std::ostream& os, const Block& c) {
-                // Rows
-                for(int y = 0; y < c._height; y++) {
-                    // Columns
-                    os << c.line(y) << std::endl;
-                }
-                return os;
-            };
+            friend std::ostream& operator<<(std::ostream& os, const Block& c);
 
     };
 
-    char Block::fill = '.';
 
 
     typedef std::shared_ptr<Block> Expr;

@@ -1,4 +1,5 @@
 #include <block.hpp>
+#include <debug.hpp>
 #include <iostream>
 
 int main(int argc, char* argv[]) {
