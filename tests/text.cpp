@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 
-#include "blk.hpp"
+#include <blk.hpp>
+
+
+#include "utils.hpp"
 
 
 TEST(Text, Test)
@@ -14,5 +17,9 @@ TEST(Text, Test)
     ASSERT_EQ(2, t2->column());
     ASSERT_EQ(2, t3->column());
     ASSERT_EQ(4, t4->column());
+    
+    std::ostringstream output;
+    ASSERT_OUTPUT("hello", output, t1, 0);
+    
 
 }
