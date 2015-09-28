@@ -45,8 +45,4 @@ namespace blk {
         return os;    
     }
 
-    
-    Expr beside(Expr e1, Expr e2) {
-        return std::make_shared<Beside>(e1, e2);
-    }
 }

@@ -22,9 +22,5 @@ namespace blk {
 
     }
 
-    Expr debug(char c, int width, int height, int column, int row) {
-        return std::make_shared<Debug>(c, width, height, column, row);
-    }
-
 
 }

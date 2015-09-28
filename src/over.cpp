@@ -32,8 +32,4 @@ namespace blk {
         return os;
     }
 
-    Expr over(Expr e1, Expr e2) {
-        return std::make_shared<Over>(e1, e2);
-    }
-
 }

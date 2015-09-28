@@ -27,7 +27,5 @@ namespace blk {
             virtual std::ostream& line(std::ostream& os, int row) const;
     };
 
-    Expr beside(Expr e1, Expr e2);
-
 
 }

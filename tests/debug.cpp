@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "debug.hpp"
+#include <blk.hpp>
 
 
 TEST(Block, Debug)

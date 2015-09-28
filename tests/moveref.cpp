@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 
 #include <blk.hpp>
-#include <debug.hpp>
 
 
 TEST(MoveRef, Test)

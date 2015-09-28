@@ -20,7 +20,4 @@ namespace blk {
     };
 
 
-    Expr debug(char c, int width, int height, int column, int row);
-
-
 }
