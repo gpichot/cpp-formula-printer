@@ -6,21 +6,13 @@ namespace blk {
     Over::Over(Expr top, Expr bottom)
         : _top(top), _bottom(bottom)
     {
-        int paddingLeft = std::max(_top->leftPadding(), _bottom->leftPadding());
-        int paddingRight = std::max(_top->rightPadding(), _bottom->rightPadding());
-        int globalPadding = _bottom->leftPadding() - _top->leftPadding();
-        if(globalPadding < 0) {
-            globalPadding = _top->column();
-        } else {
-            globalPadding += _top->column();
-        }
-
-        // int _paddingLeft = globalPadding - _top->column();
+        int maxPaddingLeft = std::max(_top->leftPadding(), _bottom->leftPadding());
+        int maxPaddingRight = std::max(_top->rightPadding(), _bottom->rightPadding());
 
         _height = _top->height() + _bottom->height();
-        _width = paddingLeft + 1 + paddingRight;
+        _width = maxPaddingLeft + 1 + maxPaddingRight;
         _row = _top->row();
-        _column = globalPadding;
+        _column = maxPaddingLeft;
     }
 
     std::ostream& Over::line(std::ostream& os, int row) const {

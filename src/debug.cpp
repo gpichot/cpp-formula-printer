@@ -10,7 +10,6 @@ namespace blk {
 
     std::ostream& Debug::line(std::ostream& os, int row) const {
 
-        // TODO: improve with repeat char?..
         if(row != _row) {
             os << std::string(_width, _fill);
         } else {
