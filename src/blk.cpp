@@ -52,13 +52,15 @@ namespace blk {
     }
 
     Expr operator==(Expr e1, Expr e2) {
-        return beside(
-                e1,
-                beside(
-                    text(" = "),
-                    e2
-                    )
-                );
+        std::string sep(1, blk::Block::fill);
+        blk::Expr right = beside(
+            text(sep + "=" + sep),
+            e2
+        );
+        return move_ref(beside(
+            e1,
+            right
+        ), e1->column() + 2, std::max(e1->row(), e2->row()));
     }
 
 

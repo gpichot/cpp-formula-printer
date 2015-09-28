@@ -46,5 +46,23 @@ TEST(BLK, OperatorQuotient) {
     ASSERT_OUTPUT("---", output, quotient2, 3); 
     ASSERT_OUTPUT(".z.", output, quotient2, 4); 
 
+}
+
+TEST(BLK, EqualityOperator) {
+
+    blk::Expr x = blk::text("x");
+    blk::Expr y = blk::text("y");
+
+    blk::Expr equality = x == y;
+
+    // Output is "x.=.y"
+    ASSERT_EQ(5, equality->width());
+    ASSERT_EQ(1, equality->height());
+    ASSERT_EQ(2, equality->column());
+    ASSERT_EQ(0, equality->row());
+
+    std::ostringstream output;
+
+    ASSERT_OUTPUT("x.=.y", output, equality, 0); 
 
 }
