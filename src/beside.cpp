@@ -12,7 +12,7 @@ namespace blk {
         int maxPaddingBottom = std::max(left->bottomPadding(), _right->bottomPadding());
 
         
-        _height = maxPaddingTop + 1 + maxPaddingBottom;
+        _height = maxPaddingTop + maxPaddingBottom;
         _width = _left->width() + _right->width();
         _row = maxPaddingTop;
         _column = _left->column(); 

@@ -13,6 +13,8 @@ TEST(Over, PaddingOnDiagNE_SW) {
     blk::Expr e2 = blk::debug('b', 2, 1, 0, 0);
     blk::Expr o = blk::over(e1, e2);
 
+    ASSERT_EQ(3, o->width());
+
     ASSERT_OUTPUT(std::string("a+."), output, o, 0);
     ASSERT_OUTPUT(std::string(".+b"), output, o, 1);
 

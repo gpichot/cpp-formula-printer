@@ -14,6 +14,8 @@ TEST(Beside, PaddingOnDiagNE_SW) {
     blk::Expr e2 = blk::debug('b', 1, 2, 0, 0);
     blk::Expr o = blk::beside(e1, e2);
 
+    ASSERT_EQ(3, o->height());
+
     ASSERT_OUTPUT(std::string("a."), output, o, 0);
     ASSERT_OUTPUT(std::string("++"), output, o, 1);
     ASSERT_OUTPUT(std::string(".b"), output, o, 2);
