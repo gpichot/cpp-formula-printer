@@ -24,7 +24,11 @@ namespace blk {
     }
 
     Expr operator+(Expr e1, Expr e2) {
-        blk::Expr right = beside(text(" + "), e2);
+        std::string sep(1, blk::Block::fill);
+        blk::Expr right = beside(
+            text(sep + "+" + sep),
+            e2
+        );
         return move_ref(beside(
             e1,
             right
@@ -32,10 +36,13 @@ namespace blk {
     }
 
     Expr operator/(Expr e1, Expr e2) {
+        int size = std::max(e1->width(), e2->width());
+        if(e1->height() > 1 || e2->height() > 1) {
+            size += 2;
+        }
+
         blk::Expr bottom = over(
-            text(
-                std::string(std::max(e1->width(), e2->width()), '-')
-            ),
+            text(std::string(size, '-')),
             e2
         );
         return move_ref(over(
