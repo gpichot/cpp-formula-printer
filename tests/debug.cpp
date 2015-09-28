@@ -6,7 +6,7 @@
 TEST(Block, Debug)
 {
     std::ostringstream output;
-    blk::Expr e = blk::debug('a', 7, 4, 1, 3);
+    blk::Expr e = blk::debug('a', 7, 4, 3, 1);
     
     ASSERT_EQ(3, e->leftPadding());
 

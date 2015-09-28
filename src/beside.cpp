@@ -41,8 +41,6 @@ namespace blk {
         } else {
             _right->line(os, row - _paddingTopForRight);
         }
-        
-        
     
         return os;    
     }

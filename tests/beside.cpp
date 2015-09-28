@@ -10,7 +10,7 @@ TEST(Beside, PaddingOnDiagNE_SW) {
 
     std::ostringstream output;
 
-    blk::Expr e1 = blk::debug('a', 1, 2, 1, 0);
+    blk::Expr e1 = blk::debug('a', 1, 2, 0, 1);
     blk::Expr e2 = blk::debug('b', 1, 2, 0, 0);
     blk::Expr o = blk::beside(e1, e2);
 
@@ -24,7 +24,7 @@ TEST(Beside, PaddingOnDiagNW_SE) {
 
     std::ostringstream output;
 
-    blk::Expr e1 = blk::debug('a', 1, 2, 1, 0);
+    blk::Expr e1 = blk::debug('a', 1, 2, 0, 1);
     blk::Expr e2 = blk::debug('b', 1, 2, 0, 0);
     blk::Expr o = blk::beside(e2, e1);
 
@@ -38,7 +38,7 @@ TEST(Beside, PaddingLeftBoth) {
 
     std::ostringstream output;
 
-    blk::Expr e1 = blk::debug('a', 1, 3, 1, 0);
+    blk::Expr e1 = blk::debug('a', 1, 3, 0, 1);
     blk::Expr e2 = blk::debug('b', 1, 1, 0, 0);
     blk::Expr o = blk::beside(e1, e2);
 
@@ -52,7 +52,7 @@ TEST(Beside, PaddingRightBoth) {
 
     std::ostringstream output;
 
-    blk::Expr e1 = blk::debug('a', 1, 3, 1, 0);
+    blk::Expr e1 = blk::debug('a', 1, 3, 0, 1);
     blk::Expr e2 = blk::debug('b', 1, 1, 0, 0);
     blk::Expr o = blk::beside(e2, e1);
 

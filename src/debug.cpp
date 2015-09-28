@@ -3,8 +3,8 @@
 
 namespace blk {
 
-    Debug::Debug(char c, int width, int height, int row, int column)
-        : _fill(c), Block(width, height, row, column)
+    Debug::Debug(char c, int width, int height, int column, int row)
+        : _fill(c), Block(width, height, column, row)
     {
     }
 
@@ -22,8 +22,8 @@ namespace blk {
 
     }
 
-    Expr debug(char c, int width, int height, int row, int column) {
-        return std::make_shared<Debug>(c, width, height, row, column);
+    Expr debug(char c, int width, int height, int column, int row) {
+        return std::make_shared<Debug>(c, width, height, column, row);
     }
 
 

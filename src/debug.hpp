@@ -12,7 +12,7 @@ namespace blk {
 
     class Debug: public Block {
         public:
-            Debug(char c, int width, int height, int row, int column);
+            Debug(char c, int width, int height, int column, int row);
 
             virtual std::ostream& line(std::ostream& os, int row) const;
         protected:
@@ -20,7 +20,7 @@ namespace blk {
     };
 
 
-    Expr debug(char c, int width, int height, int row, int column);
+    Expr debug(char c, int width, int height, int column, int row);
 
 
 }

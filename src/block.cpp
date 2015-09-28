@@ -4,7 +4,7 @@
 namespace blk {
 
 
-    Block::Block(int width, int height, int row, int column)
+    Block::Block(int width, int height, int column, int row)
         : _width(width), _height(height), _row(row), _column(column)
     {
 

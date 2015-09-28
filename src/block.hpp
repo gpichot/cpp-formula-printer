@@ -13,7 +13,7 @@ namespace blk {
 
         public:
             Block() {};
-            Block(int width, int height, int row, int column);
+            Block(int width, int height, int column, int row);
             ~Block();
 
             virtual std::ostream& line(std::ostream& os, int row) const = 0;
