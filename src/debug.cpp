@@ -8,23 +8,24 @@ namespace blk {
     {
     }
 
-    std::string Debug::line(int row) const {
-
-        std::string lineString = "";
+    std::ostream& Debug::line(std::ostream& os, int row) const {
 
         // TODO: improve with repeat char?..
-        for(int x = 0; x < _width; x++) {
-            if(row != _row || x != _column) {
-                lineString += _fill;
-            } else {
-                lineString += '+';
-            }
+        if(row != _row) {
+            os << std::string(_width, _fill);
+        } else {
+            os << std::string(_column, _fill);
+            os << '+';
+            os << std::string(rightPadding(), _fill);
         }
 
-        return lineString;
+        return os;
+
     }
 
     Expr debug(char c, int width, int height, int row, int column) {
         return std::make_shared<Debug>(c, width, height, row, column);
     }
+
+
 }

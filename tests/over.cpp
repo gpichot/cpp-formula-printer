@@ -4,41 +4,61 @@
 #include "over.hpp"
 
 
-TEST(Over, Constructor) {
+void ASSERT_OUTPUT(std::string&& test, std::ostringstream& output, blk::Expr& block, int line) {
+    block->line(output, line);
+    ASSERT_EQ(test, output.str());
+    output.clear();
+    output.str("");
+}
 
-    blk::Expr e1 = blk::debug('a',7,4,3,1);
-    blk::Expr e2 = blk::debug('b',4,8,2,2);
+TEST(Over, PaddingOnDiagNE_SW) {
+
+    std::ostringstream output;
+
+    blk::Expr e1 = blk::debug('a', 2, 1, 0, 1);
+    blk::Expr e2 = blk::debug('b', 2, 1, 0, 0);
     blk::Expr o = blk::over(e1, e2);
 
-    ASSERT_EQ(8, o->width());
-    ASSERT_EQ(12, o->height());
-    ASSERT_EQ(2, o->column());
-    ASSERT_EQ(3, o->row());
-
-    ASSERT_EQ(".aaaaaaa", o->line(0));
-    ASSERT_EQ(".aaaaaaa", o->line(1));
-    ASSERT_EQ(".aaaaaaa", o->line(2));
-    ASSERT_EQ(".a+aaaaa", o->line(3));
-    ASSERT_EQ("bbbb....", o->line(4));
-    ASSERT_EQ("bbbb....", o->line(5));
-    ASSERT_EQ("bb+b....", o->line(6));
-    ASSERT_EQ("bbbb....", o->line(7));
-    ASSERT_EQ("bbbb....", o->line(8));
-    ASSERT_EQ("bbbb....", o->line(9));
-    ASSERT_EQ("bbbb....", o->line(10));
-    ASSERT_EQ("bbbb....", o->line(11));
+    ASSERT_OUTPUT(std::string("a+."), output, o, 0);
+    ASSERT_OUTPUT(std::string(".+b"), output, o, 1);
 
 }
 
-TEST(Over, ConstructorBottomLeftPadding) {
+TEST(Over, PaddingOnDiagNW_SE) {
 
-    blk::Expr e1 = blk::debug('a', 2, 2, 1, 1);
-    blk::Expr e2 = blk::debug('b', 2, 2, 0, 0);
+    std::ostringstream output;
+
+    blk::Expr e1 = blk::debug('a', 2, 1, 0, 0);
+    blk::Expr e2 = blk::debug('b', 2, 1, 0, 1);
     blk::Expr o = blk::over(e1, e2);
 
-    ASSERT_EQ("aa.", o->line(0));
-    ASSERT_EQ("a+.", o->line(1));
-    ASSERT_EQ(".+b", o->line(2));
-    ASSERT_EQ(".bb", o->line(3));
+    ASSERT_OUTPUT(std::string(".+a"), output, o, 0);
+    ASSERT_OUTPUT(std::string("b+."), output, o, 1);
+
+}
+
+TEST(Over, PaddingBottomBoth) {
+
+    std::ostringstream output;
+
+    blk::Expr e1 = blk::debug('a', 3, 1, 0, 1);
+    blk::Expr e2 = blk::debug('b', 1, 1, 0, 0);
+    blk::Expr o = blk::over(e1, e2);
+
+    ASSERT_OUTPUT(std::string("a+a"), output, o, 0);
+    ASSERT_OUTPUT(std::string(".+."), output, o, 1);
+
+}
+
+TEST(Over, PaddingTopBoth) {
+
+    std::ostringstream output;
+
+    blk::Expr e1 = blk::debug('a', 3, 1, 0, 1);
+    blk::Expr e2 = blk::debug('b', 1, 1, 0, 0);
+    blk::Expr o = blk::over(e2, e1);
+
+    ASSERT_OUTPUT(std::string(".+."), output, o, 0);
+    ASSERT_OUTPUT(std::string("a+a"), output, o, 1);
 
 }

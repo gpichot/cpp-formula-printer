@@ -1,6 +1,8 @@
 #pragma once
 
 #include <memory>
+#include <iostream>
+#include <string>
 
 #include "block.hpp"
 
@@ -12,7 +14,7 @@ namespace blk {
         public:
             Debug(char c, int width, int height, int row, int column);
 
-            virtual std::string line(int row) const;
+            virtual std::ostream& line(std::ostream& os, int row) const;
         protected:
             char _fill;
     };

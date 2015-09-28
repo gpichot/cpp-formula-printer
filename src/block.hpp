@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <memory>
 #include <algorithm>
 
@@ -15,7 +16,7 @@ namespace blk {
             Block(int width, int height, int row, int column);
             ~Block();
 
-            virtual std::string line(int row) const = 0;
+            virtual std::ostream& line(std::ostream& os, int row) const = 0;
 
             inline int height() const {
                 return _height;
@@ -63,7 +64,7 @@ namespace blk {
 
 
 
-    typedef std::shared_ptr<Block> Expr;
+    using Expr = std::shared_ptr<Block>;
 
 
 }

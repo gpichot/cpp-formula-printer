@@ -5,12 +5,23 @@
 
 TEST(Block, Debug)
 {
+    std::ostringstream output;
     blk::Expr e = blk::debug('a', 7, 4, 1, 3);
     
     ASSERT_EQ(3, e->leftPadding());
 
-    ASSERT_EQ("aaaaaaa", e->line(0)); 
-    ASSERT_EQ("aaa+aaa", e->line(1)); 
-    ASSERT_EQ("aaaaaaa", e->line(2)); 
-    ASSERT_EQ("aaaaaaa", e->line(3)); 
+    e->line(output, 0);
+    ASSERT_EQ("aaaaaaa", output.str()); 
+    output.clear();
+    output.str("");
+    e->line(output, 1);
+    ASSERT_EQ("aaa+aaa", output.str()); 
+    output.clear();
+    output.str("");
+    e->line(output, 2);
+    ASSERT_EQ("aaaaaaa", output.str()); 
+    output.clear();
+    output.str("");
+    e->line(output, 3);
+    ASSERT_EQ("aaaaaaa", output.str()); 
 }

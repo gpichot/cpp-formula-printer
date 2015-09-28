@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "block.hpp"
 
 
@@ -11,12 +13,10 @@ namespace blk {
             Expr _top;
             Expr _bottom;
 
-            int _paddingLeft;
-
         public:
             Over(Expr top, Expr bottom);
 
-            std::string line(int row) const;
+            virtual std::ostream& line(std::ostream& os, int row) const;
     };
 
     Expr over(Expr e1, Expr e2);

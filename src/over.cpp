@@ -15,7 +15,7 @@ namespace blk {
             globalPadding += _top->column();
         }
 
-        _paddingLeft = globalPadding - _top->column();
+        // int _paddingLeft = globalPadding - _top->column();
 
         _height = _top->height() + _bottom->height();
         _width = paddingLeft + 1 + paddingRight;
@@ -23,30 +23,21 @@ namespace blk {
         _column = globalPadding;
     }
 
-    std::string Over::line(int row) const {
-        std::string lineString = "";
+    std::ostream& Over::line(std::ostream& os, int row) const {
 
-        // TODO: improve with repeat char?..
-        for(int x = 0; x < _width; x++) {
-            // Top block
-            if(row < _top->height()) {
-                if(x < _paddingLeft) {
-                    lineString += Block::fill;       
-                } else {
-                    lineString += _top->line(row);
-                    x += _top->width() - 1;
-                }
-            } else {
-                if(x < _paddingLeft) {
-                    lineString += _bottom->line(row - _top->height());
-                    x += _bottom->width() - 1;
-                } else {
-                    lineString += Block::fill;
-                }
-            }
+        if(row < _top->height()) {
+            // Print top block
+            os << std::string(leftPadding() - _top->leftPadding(), Block::fill);
+            _top->line(os, row);
+            os << std::string(rightPadding() - _top->rightPadding(), Block::fill);
+        } else {
+            // Print bottom block
+            os << std::string(leftPadding() - _bottom->leftPadding(), Block::fill);
+            _bottom->line(os, row - _top->height());
+            os << std::string(rightPadding() - _bottom->rightPadding(), Block::fill);
         }
 
-        return lineString;
+        return os;
     }
 
     Expr over(Expr e1, Expr e2) {
