@@ -25,6 +25,7 @@ namespace blk {
 
     std::ostream& Text::line(std::ostream& os, int row) const {
         
+        os << _str;
         return os;
     }
 

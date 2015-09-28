@@ -1,4 +1,7 @@
 # Created by https://www.gitignore.io/api/vim,c++,cmake,gcov
+#
+build
+
 
 ### Vim ###
 [._]*.s[a-w][a-z]

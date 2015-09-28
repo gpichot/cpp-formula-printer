@@ -15,7 +15,11 @@ namespace blk {
     Expr over(Expr e1, Expr e2);
     Expr beside(Expr e1, Expr e2);
     Expr move_ref(Expr e, int column, int row);
-    Expr text(std::string&& str, Text::Alignment alignment);
+    Expr text(std::string&& str, Text::Alignment alignment = Text::Alignment::Center);
+
+    Expr operator+(Expr e1, Expr e2);
+    Expr operator/(Expr e1, Expr e2);
+    Expr operator==(Expr e1, Expr e2);
 
 
 }
