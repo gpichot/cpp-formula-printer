@@ -11,7 +11,7 @@ TEST(Block, Output) {
 
     std::ostringstream output;
 
-    output << *e;
+    output << e;
 
     ASSERT_EQ("    0 :  +\n", output.str()); 
 }

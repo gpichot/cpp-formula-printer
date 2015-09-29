@@ -7,7 +7,9 @@
 
 
 namespace blk {
+    class Block;
 
+    using Expr = std::shared_ptr<Block>;
 
     class Block {
 
@@ -58,13 +60,9 @@ namespace blk {
             int _row;
             int _column;
 
-            friend std::ostream& operator<<(std::ostream& os, const Block& c);
+            friend std::ostream& operator<<(std::ostream& os, const Expr& c);
 
     };
-
-
-
-    using Expr = std::shared_ptr<Block>;
 
 
 }

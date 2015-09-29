@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
     blk::Block::fill = ' ';
 
 
-    std::cout << *(  (y/(z+x)) == (z+x/y)/(x+y+z)/(x+z/y) == x  )
+    std::cout << (  (y/(z+x)) == (z+x/y)/(x+y+z)/(x+z/y) == x  )
         << std::endl;
     return 0;
 }
