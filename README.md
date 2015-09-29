@@ -14,7 +14,7 @@ For instance:
 
         std::cout << (( y / ( z + x )) == ( z + x / y ) / ( x + y + z ) / ( x + z / y ) == x ) << std::endl;
 
-will outputs:
+will output:
     
        -5 :                  x        
        -4 :              z + -        
