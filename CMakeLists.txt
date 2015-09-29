@@ -57,19 +57,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     )
 endif()
 
-# Benchmarks
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2")
-    MESSAGE(STATUS ${CMAKE_CXX_FLAGS})
-    MESSAGE(STATUS ${CMAKE_C_FLAGS})
-    add_subdirectory(benchmarks)
-    add_custom_target(
-        benchmark
-        COMMAND benchmarks-formula-printer
-    )
-endif()
-
 # Packaging
 #ADD_CUSTOM_TARGET(packaging
 #    COMMAND rm -rf build
